@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo3cpi4a815td"]
+
+[ext_resource type="Texture2D" uid="uid://bsc3ge6hnh4te" path="res://art/P1_Idle.png" id="1_aj0fq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hsx1u"]
+size = Vector2(100, 21)
+
+[node name="Breakout" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(50, 710)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("1_aj0fq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_hsx1u")

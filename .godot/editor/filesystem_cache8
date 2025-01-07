@@ -1,0 +1,51 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1736176376
+export_presets.cfg::TextFile::-1::1735577417::0::1::::<><>::
+icon.svg::CompressedTexture2D::6327193919098529423::1734918827::1734918837::1::::<><>::
+::res://art/::1735783991
+P1_Idle.png::CompressedTexture2D::3655659673564760998::1734920507::1734964942::1::::<><>::
+P2_Idle.png::CompressedTexture2D::6413068934796082302::1734920539::1734964931::1::::<><>::
+PongIdle.png::CompressedTexture2D::7100376371589001071::1734924175::1734964918::1::::<><>::
+Sky.png::CompressedTexture2D::7916664989258908566::1735783986::1735783991::1::::<><>::
+Sun.png::CompressedTexture2D::6482558487207696318::1735783902::1735783991::1::::<><>::
+::res://audio/::1735481944
+Bounce.wav::AudioStreamWAV::7455357558109902517::1735481023::1735481151::1::::<><>::
+Bounce_paddle.wav::AudioStreamWAV::2192597295407934737::1735481832::1735481944::1::::<><>::
+Button Confirm.wav::AudioStreamWAV::739815611984211288::1735480911::1735481151::1::::<><>::
+Button Focus.wav::AudioStreamWAV::3680220186376080494::1735480818::1735481151::1::::<><>::
+Paddle_Wall.wav::AudioStreamWAV::1486025570796888542::1735481892::1735481944::1::::<><>::
+Player Wins!.wav::AudioStreamWAV::4722561036329642270::1735414927::1735481151::1::::<><>::
+::res://resource/::1734969649
+::res://scene/::1736176254
+GameManager.tscn::PackedScene::9031041724352293101::1736176254::0::1::::<><>::res://scene/game_manager.gd<>uid://c4gbhfdftpohj::::res://scene/pausemenu.tscn
+game_manager.gd::GDScript::-1::1735772239::0::1::::<>Node2D<>::
+mainmenu.gd::GDScript::-1::1735771983::0::1::::<>Control<>::
+mainmenu.tscn::PackedScene::4918029145427333742::1736176254::0::1::::<><>::res://scene/mainmenu.gd
+pausemenu.gd::GDScript::-1::1735773229::0::1::::<>Control<>::
+pausemenu.tscn::PackedScene::6820777584467938103::1736176254::0::1::::<><>::res://scene/pausemenu.gd<>res://scene/PingPong/check_button.gd<>uid://ksmwjhy3bo2c::::res://audio/Button Confirm.wav<>uid://bsoyxoh6ey24i::::res://audio/Button Focus.wav
+::res://scene/Flappy Bird/::1736176254
+control_scheme.gd::GDScript::-1::1736174404::0::1::::<>CanvasLayer<>::
+flappy_bird.gd::GDScript::-1::1736176130::0::1::::<>Node2D<>::
+flappy_bird.tscn::PackedScene::46911640208739341::1736176254::0::1::::<><>::res://scene/Flappy Bird/flappy_bird.gd<>uid://c8fqfqwdu8mep::::res://art/PongIdle.png<>res://scene/Flappy Bird/player_birdy.gd<>res://scene/Flappy Bird/start_screen.gd<>uid://cwe67vds18ljj::::res://icon.svg<>res://scene/Flappy Bird/game_over_screen.gd<>res://scene/Flappy Bird/parallax_background.gd<>uid://cymg15uf3rp2e::::res://art/Sun.png<>res://scene/Flappy Bird/control_scheme.gd<>uid://dk15ky8ur8kpy::::res://art/Sky.png<>res://scene/Flappy Bird/pipes_solo.gd<>uid://bsc3ge6hnh4te::::res://art/P1_Idle.png
+game_over_screen.gd::GDScript::-1::1735787232::0::1::::<>CanvasLayer<>::
+pipes_solo.gd::GDScript::-1::1736176254::0::1::::<>CharacterBody2D<>::
+player_birdy.gd::GDScript::-1::1735782687::0::1::::<>CharacterBody2D<>::
+parallax_background.gd::GDScript::-1::1736174248::0::1::::<>ParallaxBackground<>::
+start_screen.gd::GDScript::-1::1735787232::0::1::::<>CanvasLayer<>::
+::res://scene/PingPong/::1736176254
+ball.gd::GDScript::-1::1735762352::0::1::::<>CharacterBody2D<>::
+ball.tscn::PackedScene::3755771649925610644::1736176254::0::1::::<><>::res://scene/PingPong/ball.gd<>uid://dehowddn5fccb::::res://audio/Bounce.wav
+Bounce.wav::AudioStreamWAV::3678415400700916253::1735481104::1735762546::1::::<><>::
+check_button.gd::GDScript::-1::1735501293::0::1::::<>CheckButton<>::
+controls_p_1.gd::GDScript::-1::1735501293::0::1::::<>Label<>::
+controls_p_2.gd::GDScript::-1::1735503171::0::1::::<>Label<>::
+ping_pong.gd::GDScript::-1::1735762385::0::1::::<>Node2D<>::
+ping_pong.tscn::PackedScene::6146372781428354141::1736176254::0::1::::<><>::uid://6ffb3cs58nua::::res://scene/PingPong/player_1.tscn<>res://scene/PingPong/ping_pong.gd<>uid://br1dr067xftgh::::res://scene/PingPong/player_2.tscn<>uid://btrlal7075xbg::::res://scene/PingPong/ball.tscn<>res://scene/PingPong/win_screen.gd<>res://scene/PingPong/controls_p_1.gd<>uid://b8jv5jgdk1ts5::::res://audio/Player Wins!.wav<>res://scene/PingPong/controls_p_2.gd
+player_1.gd::GDScript::-1::1735502323::0::1::::<>CharacterBody2D<>::
+player_1.tscn::PackedScene::2186482886909693316::1736176254::0::1::::<><>::res://scene/PingPong/player_1.gd<>uid://vf3vhnjcycig::::res://audio/Paddle_Wall.wav
+player_2.gd::GDScript::-1::1735504818::0::1::::<>CharacterBody2D<>::
+player_2.tscn::PackedScene::3633518719077466871::1736176254::0::1::::<><>::res://scene/PingPong/player_2.gd<>uid://vf3vhnjcycig::::res://audio/Paddle_Wall.wav
+win_screen.gd::GDScript::-1::1735504465::0::1::::<>CanvasLayer<>::
+::res://script/::1735771983
+global_variables.gd::GDScript::-1::1735771983::0::1::::<>Node<>::
+::res://txtfiles/::1734919677

@@ -1,0 +1,14 @@
+CollisionShape2D
+Sprite2D
+CharacterBody2D
+AudioStreamPlayer
+ParallaxLayer
+Camera2D
+StaticBody2D
+CanvasLayer
+CanvasGroup
+Label
+Button
+OptionButton
+HBoxContainer
+ParallaxBackground

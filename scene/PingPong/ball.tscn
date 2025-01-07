@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://btrlal7075xbg"]
+
+[ext_resource type="Script" path="res://scene/PingPong/ball.gd" id="1_l74fr"]
+[ext_resource type="AudioStream" uid="uid://dehowddn5fccb" path="res://audio/Bounce.wav" id="2_fcc5o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o1k2k"]
+radius = 20.025
+
+[node name="Ball" type="CharacterBody2D"]
+script = ExtResource("1_l74fr")
+metadata/_edit_group_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-20, -20)
+polygon = PackedVector2Array(20, 0, 25, 1, 30, 3, 34, 6, 37, 10, 39, 14, 40, 18, 39, 25, 37, 30, 34, 34, 30, 37, 26, 39, 20, 40, 14, 39, 10, 37, 6, 34, 2, 29, 1, 25, 0, 19, 1, 15, 3, 10, 6, 6, 10, 3, 15, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o1k2k")
+
+[node name="BounceSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fcc5o")

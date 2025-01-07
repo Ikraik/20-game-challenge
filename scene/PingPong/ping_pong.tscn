@@ -1,0 +1,207 @@
+[gd_scene load_steps=14 format=3 uid="uid://cttl4ke2g6n06"]
+
+[ext_resource type="PackedScene" uid="uid://6ffb3cs58nua" path="res://scene/PingPong/player_1.tscn" id="1_fxydk"]
+[ext_resource type="Script" path="res://scene/PingPong/ping_pong.gd" id="1_slu1b"]
+[ext_resource type="PackedScene" uid="uid://br1dr067xftgh" path="res://scene/PingPong/player_2.tscn" id="2_nhneh"]
+[ext_resource type="PackedScene" uid="uid://btrlal7075xbg" path="res://scene/PingPong/ball.tscn" id="3_0exeb"]
+[ext_resource type="Script" path="res://scene/PingPong/win_screen.gd" id="5_ctwjb"]
+[ext_resource type="Script" path="res://scene/PingPong/controls_p_1.gd" id="5_ryxsp"]
+[ext_resource type="AudioStream" uid="uid://b8jv5jgdk1ts5" path="res://audio/Player Wins!.wav" id="6_jk8wi"]
+[ext_resource type="Script" path="res://scene/PingPong/controls_p_2.gd" id="6_p45bw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85gwd"]
+size = Vector2(1320, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pybhp"]
+size = Vector2(1320, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bs4t4"]
+size = Vector2(20, 760)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vj84t"]
+size = Vector2(20, 760)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2t1dj"]
+size = Vector2(31, 720)
+
+[node name="PingPong" type="Node2D"]
+script = ExtResource("1_slu1b")
+
+[node name="Divider" type="Polygon2D" parent="."]
+position = Vector2(-6, 3)
+color = Color(0.728822, 0.728822, 0.728822, 1)
+polygon = PackedVector2Array(647, 1, 621, 362, 640, 723, 669, 362)
+
+[node name="Player1" parent="." instance=ExtResource("1_fxydk")]
+position = Vector2(62, 360)
+collision_layer = 2
+collision_mask = 3
+
+[node name="Player2" parent="." instance=ExtResource("2_nhneh")]
+position = Vector2(1230, 360)
+collision_layer = 2
+collision_mask = 3
+
+[node name="Ball" parent="." instance=ExtResource("3_0exeb")]
+position = Vector2(640, 360)
+collision_layer = 4
+collision_mask = 11
+
+[node name="Boundaries" type="StaticBody2D" parent="."]
+
+[node name="Top" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(640, -10)
+shape = SubResource("RectangleShape2D_85gwd")
+
+[node name="Bottom" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(640, 730)
+shape = SubResource("RectangleShape2D_pybhp")
+
+[node name="Left" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(-10, 360)
+shape = SubResource("RectangleShape2D_bs4t4")
+
+[node name="Right" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(1290, 360)
+shape = SubResource("RectangleShape2D_vj84t")
+
+[node name="Scoreboard" type="CanvasLayer" parent="."]
+
+[node name="P1_Score" type="Label" parent="Scoreboard"]
+offset_left = 456.0
+offset_top = 28.0
+offset_right = 556.0
+offset_bottom = 51.0
+text = "Player Score:
+0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P2_Score" type="Label" parent="Scoreboard"]
+offset_left = 722.0
+offset_top = 28.0
+offset_right = 822.0
+offset_bottom = 51.0
+text = "Player Score:
+0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerLabel1" type="Label" parent="Scoreboard"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 197.0
+offset_top = -57.0
+offset_right = 516.0
+offset_bottom = 57.0
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 45
+text = "Player 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerLabel2" type="Label" parent="Scoreboard"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -479.0
+offset_top = -57.0
+offset_right = -160.0
+offset_bottom = 57.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 45
+text = "Player 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Controls P1" type="Label" parent="Scoreboard"]
+offset_left = 158.0
+offset_top = 3.0
+offset_right = 367.0
+offset_bottom = 78.0
+text = "Controls
+Pause: Esc or Pause Button
+Move: W/S"
+horizontal_alignment = 1
+script = ExtResource("5_ryxsp")
+
+[node name="Controls P2" type="Label" parent="Scoreboard"]
+offset_left = 927.0
+offset_top = 6.0
+offset_right = 1136.0
+offset_bottom = 81.0
+text = "Controls
+Pause: Esc or Pause Button
+Move: Up or Down key"
+horizontal_alignment = 1
+script = ExtResource("6_p45bw")
+
+[node name="Goal4P1" type="Area2D" parent="."]
+position = Vector2(1249, 0)
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal4P1"]
+position = Vector2(15.5, 360)
+shape = SubResource("RectangleShape2D_2t1dj")
+
+[node name="Goal4P2" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal4P2"]
+position = Vector2(15.5, 360)
+shape = SubResource("RectangleShape2D_2t1dj")
+
+[node name="WinScreen" type="CanvasLayer" parent="."]
+process_mode = 2
+visible = false
+script = ExtResource("5_ctwjb")
+
+[node name="Panel" type="Panel" parent="WinScreen"]
+offset_right = 1282.0
+offset_bottom = 720.0
+
+[node name="Player Wins Label" type="Label" parent="WinScreen/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = -203.0
+offset_right = 205.0
+offset_bottom = -104.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 72
+text = "Placeholder"
+
+[node name="Continue Label" type="Label" parent="WinScreen/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.0
+offset_top = 150.0
+offset_right = 280.0
+offset_bottom = 213.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 45
+text = "Press Space to continue"
+
+[node name="AudioWinner" type="AudioStreamPlayer" parent="WinScreen"]
+stream = ExtResource("6_jk8wi")
+
+[connection signal="body_shape_entered" from="Goal4P1" to="." method="_on_goal_4p_1_body_shape_entered"]
+[connection signal="body_shape_entered" from="Goal4P2" to="." method="_on_goal_4p_2_body_shape_entered"]

@@ -1,0 +1,206 @@
+[gd_scene load_steps=16 format=3 uid="uid://wyvl2on0d8h"]
+
+[ext_resource type="Script" path="res://scene/Flappy Bird/flappy_bird.gd" id="1_022sr"]
+[ext_resource type="Texture2D" uid="uid://c8fqfqwdu8mep" path="res://art/PongIdle.png" id="1_ey4dl"]
+[ext_resource type="Script" path="res://scene/Flappy Bird/player_birdy.gd" id="1_jl5j1"]
+[ext_resource type="Script" path="res://scene/Flappy Bird/start_screen.gd" id="4_erm2l"]
+[ext_resource type="Texture2D" uid="uid://cwe67vds18ljj" path="res://icon.svg" id="4_k1vfb"]
+[ext_resource type="Script" path="res://scene/Flappy Bird/game_over_screen.gd" id="5_w7c21"]
+[ext_resource type="Script" path="res://scene/Flappy Bird/parallax_background.gd" id="6_2x1n5"]
+[ext_resource type="Texture2D" uid="uid://cymg15uf3rp2e" path="res://art/Sun.png" id="6_bt5on"]
+[ext_resource type="Script" path="res://scene/Flappy Bird/control_scheme.gd" id="6_jk778"]
+[ext_resource type="Texture2D" uid="uid://dk15ky8ur8kpy" path="res://art/Sky.png" id="7_2v2o6"]
+[ext_resource type="Script" path="res://scene/Flappy Bird/pipes_solo.gd" id="8_lh3dw"]
+[ext_resource type="Texture2D" uid="uid://bsc3ge6hnh4te" path="res://art/P1_Idle.png" id="9_ika0t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uwaas"]
+radius = 26.4197
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gycmm"]
+size = Vector2(21, 101)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q50io"]
+size = Vector2(1280, 85)
+
+[node name="FlappyBird" type="Node2D"]
+script = ExtResource("1_022sr")
+
+[node name="PlayerBirdy" type="CharacterBody2D" parent="."]
+position = Vector2(149, 225)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_jl5j1")
+
+[node name="Birdy" type="Sprite2D" parent="PlayerBirdy"]
+position = Vector2(51, 51)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ey4dl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBirdy"]
+position = Vector2(51, 51)
+shape = SubResource("CircleShape2D_uwaas")
+
+[node name="Pipes_Solo" type="CharacterBody2D" parent="."]
+position = Vector2(1120, 462)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("8_lh3dw")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Pipes_Solo"]
+rotation = 1.5708
+scale = Vector2(5, 5)
+texture = ExtResource("9_ika0t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipes_Solo"]
+position = Vector2(2.5, 0.5)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_gycmm")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+script = ExtResource("6_2x1n5")
+
+[node name="Sun" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sun"]
+position = Vector2(651, 548)
+scale = Vector2(5.08594, 4.28906)
+texture = ExtResource("6_bt5on")
+
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1270, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky"]
+position = Vector2(478.526, 208.5)
+scale = Vector2(4.97656, 1.62891)
+texture = ExtResource("7_2v2o6")
+offset = Vector2(32.045, 0)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(0, 9)
+metadata/_edit_group_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="Floor"]
+position = Vector2(0, 459)
+texture = ExtResource("4_k1vfb")
+texture_scale = Vector2(0.13, 0.13)
+polygon = PackedVector2Array(0, 170, 1278, 170, 1278, 255, 0, 255)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(641, 671.5)
+shape = SubResource("RectangleShape2D_q50io")
+
+[node name="StartScreen" type="CanvasLayer" parent="."]
+process_mode = 2
+script = ExtResource("4_erm2l")
+
+[node name="Label" type="Label" parent="StartScreen"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -148.0
+offset_top = -191.0
+offset_right = 181.0
+offset_bottom = -168.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Press Space (or) Face Down Button to start"
+
+[node name="GameOverScreen" type="CanvasLayer" parent="."]
+process_mode = 2
+visible = false
+script = ExtResource("5_w7c21")
+
+[node name="Game Over Label" type="Label" parent="GameOverScreen"]
+offset_left = 497.0
+offset_top = 85.0
+offset_right = 794.0
+offset_bottom = 157.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+text = "Game Over!"
+
+[node name="Label" type="Label" parent="GameOverScreen"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -148.0
+offset_top = -191.0
+offset_right = 181.0
+offset_bottom = -168.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Press Space (or) Face Left Button to start again"
+
+[node name="CurrentScore" type="Label" parent="GameOverScreen"]
+offset_left = 588.0
+offset_top = 350.0
+offset_right = 699.0
+offset_bottom = 399.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Current Score:
+0"
+horizontal_alignment = 1
+
+[node name="HighScore" type="Label" parent="GameOverScreen"]
+offset_left = 577.0
+offset_top = 209.0
+offset_right = 715.0
+offset_bottom = 258.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "High Score:
+0"
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GameOverScreen"]
+
+[node name="Control Scheme" type="CanvasLayer" parent="."]
+script = ExtResource("6_jk778")
+
+[node name="Label" type="Label" parent="Control Scheme"]
+offset_left = 942.0
+offset_top = 21.0
+offset_right = 1239.0
+offset_bottom = 44.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Jump: Spacebar (or) Face Down Button"
+
+[node name="Scoreboard" type="CanvasLayer" parent="."]
+
+[node name="CurrentScore" type="Label" parent="Scoreboard"]
+offset_left = 1104.0
+offset_top = 115.0
+offset_right = 1233.0
+offset_bottom = 138.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Current Score : 0"
+horizontal_alignment = 2
+
+[node name="HighScore" type="Label" parent="Scoreboard"]
+offset_left = 1127.0
+offset_top = 80.0
+offset_right = 1232.0
+offset_bottom = 103.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "High Score : 0"
+horizontal_alignment = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="continued" from="GameOverScreen" to="." method="_on_game_over_screen_continued"]
